@@ -1,3 +1,7 @@
+# n Queens problem
+# Algorithm by: snazrul1 @ https://github.com/snazrul1/PyRevolution/blob/master/Puzzles/N_Queen_Problem.ipynb
+# Postgres data inserted from: https://pynative.com/python-postgresql-insert-update-delete-table-data-to-perform-crud-operations/
+
 from itertools import permutations
 import psycopg2
 import pytest
@@ -23,21 +27,21 @@ for combo in permutations(cols):
         try:
             connection = psycopg2.connect(user="postgres",
                                           password="Passw0rd",
-                                          host="127.0.0.1",
+                                          host="host.docker.internal",
                                           port="5432",
-                                          database="queens")
+                                          database="postgres")
             cursor = connection.cursor()
 
-            postgres_insert_query = """ INSERT INTO untitled_table_195 (ID, test) VALUES (%s,%s)"""
+            postgres_insert_query = """ INSERT INTO solutiontable (ID, test) VALUES (%s,%s)"""
             record_to_insert = (str(sol),'N value='+ str(N) +'  Solution ' + str(sol) + ': ' + str(combo))
             cursor.execute(postgres_insert_query, record_to_insert)
 
             connection.commit()
             count = cursor.rowcount
-            print(count, "Record inserted successfully into testinglimits table")
+            print(count, "Record inserted successfully into solutiontable table")
 
         except (Exception, psycopg2.Error) as error:
-            print("Failed to insert record into testinglimits table", error)
+            print("Failed to insert record into solutiontable table", error)
 
         finally:
             # closing database connection.
