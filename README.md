@@ -12,23 +12,23 @@ docker run nqueens
 ###############################
 Si falla la inserción:
 ###############################
-Nos conectamos al postgres con el usuario postgres:
+1.- Nos conectamos al postgres con el usuario postgres:
 
 psql -U postgres
 
-Hacemos un listado de las bases de datos disponibles:
+2.- Hacemos un listado de las bases de datos disponibles:
 
 \l
 
-Si no está creada la base de datos, correr la siguiente query:
+3.- Si no está creada la base de datos, correr la siguiente query:
 
 CREATE TABLE solutiontable(
     id SERIAL PRIMARY KEY,
     test VARCHAR NOT NULL
 );
 
-Si sí, se debe corregir la tabla con la siguiente query:
+4.- Si sí, se debe corregir la tabla con la siguiente query:
 
 ALTER TABLE solutiontable ADD COLUMN test VARCHAR;
 
-Salimos con exit e intentar de nuevo.
+5.- Salimos con exit e intentar de nuevo.
