@@ -1,34 +1,34 @@
 Notas:
 
-Iniciar el postgres:
+Run postgres:
 docker-compose up -d
 
-Compilar el build:
+Build:
 docker build -t nqueens .
 
-Correr el build:
+Run the build:
 docker run nqueens
 
-###############################
-Si falla la inserción:
-###############################
-1.- Nos conectamos al postgres con el usuario postgres:
-
+##############################################################
+If the insertion fails to the following steps:
+##############################################################
+1.- Connect to the postgres with the postgres user:
 psql -U postgres
 
-2.- Hacemos un listado de las bases de datos disponibles:
-
+2.- List the databases with this command:
 \l
 
-3.- Si no está creada la base de datos, correr la siguiente query:
-
+3.- If the database "solutiontable" does not appears, run the following query to create it:
 CREATE TABLE solutiontable(
     id SERIAL PRIMARY KEY,
     test VARCHAR NOT NULL
 );
 
-4.- Si sí, se debe corregir la tabla con la siguiente query:
+4.- If the DB appears, run the follow query: (it seems that it does not adds the test column)
 
 ALTER TABLE solutiontable ADD COLUMN test VARCHAR;
 
-5.- Salimos con exit e intentar de nuevo.
+5.- Exit postgres with exit and run again the build: 
+
+exit
+docker run nqueens
