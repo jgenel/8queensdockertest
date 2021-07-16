@@ -10,5 +10,5 @@ WORKDIR /usr/src/app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
-CMD ["dockertest.py"]
+CMD ["nqueens.py"]
 ENTRYPOINT ["python3"]
